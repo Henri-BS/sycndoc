@@ -23,9 +23,7 @@ public class UserDto implements Serializable {
     private String password;
     private UserRoles userRoles;
     private String userImage;
-    private String userCoverImage;
     private String userBio;
-    private String userLocation;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDateTime createdDate;
 
@@ -40,9 +38,7 @@ public class UserDto implements Serializable {
         password = entity.getPassword();
         userRoles = entity.getUserRoles();
         userImage = entity.getImage();
-        userCoverImage = entity.getCoverImage();
         userBio = entity.getUserBio();
-        userLocation = entity.getUserLocation();
         createdDate = entity.getCreatedDate();
     }
 
@@ -70,16 +66,8 @@ public class UserDto implements Serializable {
         return userImage;
     }
 
-    public String getUserCoverImage() {
-        return userCoverImage;
-    }
-
     public String getUserBio() {
         return userBio;
-    }
-
-    public String getUserLocation() {
-        return userLocation;
     }
 
     @JsonProperty

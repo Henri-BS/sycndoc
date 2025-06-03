@@ -6,6 +6,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_user")
@@ -30,15 +32,14 @@ public class User {
 
     private String image;
 
-    private String coverImage;
-
     @Column(columnDefinition = "TEXT")
     private String userBio;
 
-    private String userLocation;
-
     @CreatedDate
     private LocalDateTime createdDate = LocalDateTime.now();
+
+    @OneToMany(mappedBy = "user")
+    private Set<Cliente> clientes = new HashSet<>();
 
     public User() {
     }
@@ -91,14 +92,6 @@ public class User {
         this.userBio = userBio;
     }
 
-    public String getUserLocation() {
-        return userLocation;
-    }
-
-    public void setUserLocation(String userLocation) {
-        this.userLocation = userLocation;
-    }
-
     public LocalDateTime getCreatedDate() {
         return createdDate;
     }
@@ -111,12 +104,5 @@ public class User {
         this.image = image;
     }
 
-    public String getCoverImage() {
-        return coverImage;
-    }
-
-    public void setCoverImage(String coverImage) {
-        this.coverImage = coverImage;
-    }
 
 }
