@@ -87,9 +87,7 @@ public class UserServiceImpl implements UserService {
         edit.setId(edit.getId());
         edit.setUsername(dto.getUsername());
         edit.setImage(dto.getUserImage());
-        edit.setCoverImage(dto.getUserCoverImage());
         edit.setUserBio(dto.getUserBio());
-        edit.setUserLocation(dto.getUserLocation());
         edit.setPassword(passwordEncoder.encode(dto.getPassword()));
 
         return new UserDto(userRepository.save(edit));

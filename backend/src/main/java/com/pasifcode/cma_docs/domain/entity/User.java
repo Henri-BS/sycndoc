@@ -39,7 +39,10 @@ public class User {
     private LocalDateTime createdDate = LocalDateTime.now();
 
     @OneToMany(mappedBy = "user")
-    private Set<Cliente> clientes = new HashSet<>();
+    private Set<Client> clients = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private Set<Poa> poas = new HashSet<>();
 
     public User() {
     }
