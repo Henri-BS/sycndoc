@@ -5,9 +5,7 @@ import { useEffect, useState } from "react";
 import { removeAccents } from "components/shared/Template";
 import axios from "axios";
 import { baseUrl } from "utils/requests";
-import { FaHouse, FaUser } from "react-icons/fa6";
-import { Breadcrumb } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { FaUser } from "react-icons/fa6";
 
 export default function Users() {
     const [query, setQuery] = useState("");
@@ -15,7 +13,7 @@ export default function Users() {
     const handlePageChange = (newPageNumber: number) => {
         setPageNumber(newPageNumber);
     }
-    const [userPage, setUserPage] = useState<UserPage>({ content: [], page: { number: 0, size: 0, totalPages: 0, totalElements: 0 } });
+    const [userPage, setUserPage] = useState<UserPage>({ content: [], size: 0, number: 0, totalElements: 0,  totalPages: 0 });
 
     useEffect(() => {
         axios.get(`${baseUrl}/users?page=${pageNumber}&size=12&sort=createdDate,DESC`)
@@ -25,23 +23,7 @@ export default function Users() {
     }, [pageNumber, query]);
 
     return (
-        <div>
-            {
-                
-            }
-            <Breadcrumb aria-label="breadcrumb" className="mb-3 py-2">
-                <Breadcrumb.Item icon={FaHouse}>
-                    <Link to="/">
-                        Início
-                    </Link>
-                </Breadcrumb.Item>
-                <Breadcrumb.Item>
-                    <Link to="/usuarios">
-                        Usuários
-                    </Link>
-                </Breadcrumb.Item>
-            </Breadcrumb>
-
+        <div className="px-4">
             <SearchBar
                 pageIcon={<FaUser />}
                 pageTitle="Usuários"

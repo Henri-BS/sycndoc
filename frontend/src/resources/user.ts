@@ -16,12 +16,39 @@ export type User = {
 
 export type UserPage = {
   content: User[];
-  page: {
-    size?: number;
-    totalElements: number;
-    totalPages?: number;
-    number: number;
+  number: 0;
+  totalPages: 0;
+  size: 0;
+  totalElements: 0;
+  first?: true;
+  last?: true;
+  numberOfElements?: 0;
+  sort?: [
+    {
+      direction: string;
+      nullHandling: string;
+      ascending: true;
+      property: string;
+      ignoreCase: true;
+    }
+  ];
+  pageable?: {
+    offset: 0;
+    sort: [
+      {
+        direction: string;
+        nullHandling: string;
+        ascending: true;
+        property: string;
+        ignoreCase: true;
+      }
+    ];
+    paged: true;
+    pageSize: 0;
+    pageNumber: 0;
+    unpaged: true;
   };
+  empty?: true;
 };
 
 export type UserProps = {

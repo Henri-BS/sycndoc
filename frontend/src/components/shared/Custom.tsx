@@ -41,16 +41,34 @@ export const customTheme: CustomFlowbiteTheme = {
     },
     button: {
         "color": {
-            "yellow": "text-yellow-400 hover:text-slate-200 border border-yellow-500 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm text-center"
+            "yellow": "text-yellow-400 hover:text-white border border-yellow-500 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm text-center"
         },
     },
-  dropdown: {
+    dropdown: {
         "content": " focus:outline-none ",
         "floating": {
             "item": {
                 "container": "",
                 "base": "flex w-full cursor-pointer items-center justify-start px-4 py-2 text-md focus:outline-none text-zinc-200 bg-zinc-800 hover:bg-zinc-600 hover:text-white focus:text-white",
                 "icon": "mr-2 h-4 w-4"
+            },
+        }
+    },
+    floatingLabel: {
+        "input": {
+            "default": {
+                "filled": {
+                    "sm": "peer block w-full appearance-none rounded-t-lg border-0 border-b-2 border-gray-300 bg-gray-50 px-2.5 pb-2.5 pt-5 text-xs text-gray-900 focus:border-primary-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-primary-500",
+                    "md": "peer block w-full appearance-none rounded-t-lg border-0 border-b-2 border-gray-300 bg-gray-50 px-2.5 pb-2.5 pt-5 text-sm text-gray-900 focus:border-primary-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-primary-500"
+                },
+            }
+        },
+        "label": {
+            "default": {
+                "filled": {
+                    "sm": "absolute left-2.5 top-2 z-10 origin-[0] -translate-y-4 scale-75 text-xs text-gray-500 transition-transform duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-primary-600 ",
+                    "md": "absolute left-2.5 top-2 z-10 origin-[0] -translate-y-4 scale-75 text-sm text-gray-500 transition-transform duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-primary-600 "
+                },
             },
         }
     },

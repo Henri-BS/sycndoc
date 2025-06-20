@@ -8,25 +8,25 @@ import { ToastContainer } from "react-toastify";
 import { useAuth } from "resources/auth";
 
 export default function PageRoutes() {
-const auth = useAuth();
+    const auth = useAuth();
     return (
         <>
             <BrowserRouter>
                 <Header />
                 <div>
-                        <Routes>
-                            <Route path="/login" element={<Login />} />
-                            {!auth.isSessionValid ? <Login/> :
-                                <>
-                                    <Route path="/" element={<Home />} />
-                                    <Route path="/usuarios" element={<Users />} />
-                                    <Route path="/usuarios/:userId" element={<UserProfile />} />
-                                    <Route path="/perfil/editar/:userId" element={<UserEditProfile />} />
+                    <Routes>
+                        <Route path="/login" element={<Login />} />
+                        {!auth.isSessionValid ? <Login /> :
+                            <>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/usuarios" element={<Users />} />
+                                <Route path="/usuarios/:userId" element={<UserProfile />} />
+                                <Route path="/perfil/editar/:userId" element={<UserEditProfile />} />
 
-                                </>
-                            }
-                        </Routes>
-                    
+                            </>
+                        }
+                    </Routes>
+
                 </div>
                 <Footer />
                 <ToastContainer position="top-right"

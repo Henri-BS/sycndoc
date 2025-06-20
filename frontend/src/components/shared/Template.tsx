@@ -67,7 +67,7 @@ export const Header = () => {
                         }
                     </Navbar.Collapse>
                 </Navbar>
-                <div className="h-2 w-full bg-gradient-to-r from-yellow-500 to-yellow-600 order-3" />
+                <div className="h-2 w-full bg-gradient-to-r from-yellow-400 to-yellow-500 order-3" />
             </Flowbite>
         </>
     );
@@ -81,7 +81,7 @@ export const Footer = () => {
     return (
         <>
             <FooterFR className="mt-2 shadow bg-gradient-to-r from-zinc-900 to-zinc-800 rounded-none flex-col">
-                <div className="h-2 w-full bg-gradient-to-r from-yellow-500 to-yellow-600" />
+                <div className="h-2 w-full bg-gradient-to-r from-yellow-400 to-yellow-500" />
                 <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                     <div className="sm:flex sm:items-center sm:justify-between">
 
