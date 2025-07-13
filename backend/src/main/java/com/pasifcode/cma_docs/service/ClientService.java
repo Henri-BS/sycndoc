@@ -9,6 +9,6 @@ public interface ClientService {
 
     ClientDto findById(Long id);
 
-    void saveCliente(ClientDto dto);
+    void saveClient(ClientDto dto);
 
 }

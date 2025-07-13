@@ -1,10 +1,11 @@
 package com.pasifcode.cma_docs.init;
 
+import com.pasifcode.cma_docs.domain.dto.ClientDto;
 import com.pasifcode.cma_docs.domain.entity.Client;
 import com.pasifcode.cma_docs.domain.entity.User;
 import com.pasifcode.cma_docs.domain.enums.UserRoles;
-import com.pasifcode.cma_docs.domain.repository.ClientRepository;
 import com.pasifcode.cma_docs.domain.repository.UserRepository;
+import com.pasifcode.cma_docs.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Lazy;
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Component
 public class StartApplication implements CommandLineRunner {
@@ -21,13 +21,13 @@ public class StartApplication implements CommandLineRunner {
     private final UserRepository userRepository;
     @Lazy
     private final PasswordEncoder passwordEncoder;
-    private final ClientRepository clientRepository;
+    private final ClientService clientService;
 
     @Autowired
-    public StartApplication(UserRepository userRepository, PasswordEncoder passwordEncoder, ClientRepository clientRepository) {
+    public StartApplication(UserRepository userRepository, PasswordEncoder passwordEncoder, ClientService clientService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.clientRepository = clientRepository;
+        this.clientService = clientService;
     }
 
     @Transactional
@@ -42,7 +42,6 @@ public class StartApplication implements CommandLineRunner {
             user.setUserRoles(UserRoles.ADMIN);
             userRepository.save(user);
         }
-
 
         Client client1 = new Client();
         client1.setClientName("Maria Souza");
@@ -67,6 +66,8 @@ public class StartApplication implements CommandLineRunner {
         client1.setWitness2Rg("147258369");
         client1.setWitness2Cpf("951.753.852-00");
         client1.setUser(user);
+        ClientDto clientDto1 = new ClientDto(client1);
+        clientService.saveClient(clientDto1);
 
         Client client2 = new Client();
         client2.setClientName("Ricardo Santos");
@@ -91,6 +92,9 @@ public class StartApplication implements CommandLineRunner {
         client2.setWitness2Rg("357951258");
         client2.setWitness2Cpf("951.258.753-00");
         client2.setUser(user);
+        ClientDto clientDto2 = new ClientDto(client2);
+        clientService.saveClient(clientDto2);
+
 
         Client client3 = new Client();
         client3.setClientName("João Silva");
@@ -115,6 +119,8 @@ public class StartApplication implements CommandLineRunner {
         client3.setWitness2Rg("789123456");
         client3.setWitness2Cpf("654.987.321-00");
         client3.setUser(user);
+        ClientDto clientDto3 = new ClientDto(client3);
+        clientService.saveClient(clientDto3);
 
         Client client4 = new Client();
         client4.setClientName("Fernanda Oliveira");
@@ -139,6 +145,8 @@ public class StartApplication implements CommandLineRunner {
         client4.setWitness2Rg("456789123");
         client4.setWitness2Cpf("321.654.987-00");
         client4.setUser(user);
+        ClientDto clientDto4 = new ClientDto(client4);
+        clientService.saveClient(clientDto4);
 
         Client client5 = new Client();
         client5.setClientName("Pedro Nunes");
@@ -163,6 +171,8 @@ public class StartApplication implements CommandLineRunner {
         client5.setWitness2Rg("753951456");
         client5.setWitness2Cpf("951.753.852-00");
         client5.setUser(user);
+        ClientDto clientDto5 = new ClientDto(client5);
+        clientService.saveClient(clientDto5);
 
         Client client6 = new Client();
         client6.setClientName("Luciana Ferreira");
@@ -187,6 +197,8 @@ public class StartApplication implements CommandLineRunner {
         client6.setWitness2Rg("753951852");
         client6.setWitness2Cpf("321.789.654-00");
         client6.setUser(user);
+        ClientDto clientDto6 = new ClientDto(client6);
+        clientService.saveClient(clientDto6);
 
         Client client7 = new Client();
         client7.setClientName("Roberto Lima");
@@ -211,8 +223,10 @@ public class StartApplication implements CommandLineRunner {
         client7.setWitness2Rg("753951456");
         client7.setWitness2Cpf("852.963.741-00");
         client7.setUser(user);
+        ClientDto clientDto7 = new ClientDto(client7);
+        clientService.saveClient(clientDto7);
 
-Client client8 = new Client();
+        Client client8 = new Client();
         client8.setClientName("Eduardo Silva");
         client8.setClientNationality("brasileiro");
         client8.setClientMaritalStatus("casado");
@@ -244,7 +258,8 @@ Client client8 = new Client();
         client8.setWitness2Rg("753951852");
         client8.setWitness2Cpf("321.789.654-00");
         client8.setUser(user);
-
+        ClientDto clientDto8 = new ClientDto(client8);
+        clientService.saveClient(clientDto8);
 
         Client client9 = new Client();
         client9.setClientName("Beatriz Almeida");
@@ -278,7 +293,8 @@ Client client8 = new Client();
         client9.setWitness2Rg("357951258");
         client9.setWitness2Cpf("951.258.753-00");
         client9.setUser(user);
+        ClientDto clientDto9 = new ClientDto(client9);
+        clientService.saveClient(clientDto9);
 
-        clientRepository.saveAll(List.of(client1, client2, client3, client4, client5, client6, client7, client8, client9));
     }
 }

@@ -23,8 +23,8 @@ public class Poa extends Document {
     }
 
     @JsonCreator
-    public Poa(String title, String grantee, String grantor, String description, String date, String location, Long id, Client client, User user) {
-        super(title, grantee, grantor, description, date, location);
+    public Poa(String title, String grantee, String grantor, String description, String date, String location, String content, Long id, Client client, User user) {
+        super(title, grantee, grantor, description, date, location, content);
         this.id = id;
         this.client = client;
         this.user = user;

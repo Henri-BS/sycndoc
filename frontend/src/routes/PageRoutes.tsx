@@ -2,6 +2,7 @@ import { Header, Footer } from "components/shared/Template";
 import { Login, UserEditProfile } from "pages/forms/UserForm";
 import Users from "pages/lists/UserList";
 import Home from "pages/main/Home";
+import { ClientProfile } from "pages/profiles/ClientProfile";
 import { UserProfile } from "pages/profiles/UserProfile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -22,7 +23,7 @@ export default function PageRoutes() {
                                 <Route path="/usuarios" element={<Users />} />
                                 <Route path="/usuarios/:userId" element={<UserProfile />} />
                                 <Route path="/perfil/editar/:userId" element={<UserEditProfile />} />
-
+                                <Route path="/clientes/:clientId" element={<ClientProfile />} />
                             </>
                         }
                     </Routes>

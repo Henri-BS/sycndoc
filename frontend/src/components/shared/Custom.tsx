@@ -77,7 +77,7 @@ export const customTheme: CustomFlowbiteTheme = {
 
 export const CustomMarkdown = ({ item }: any) => {
     const CustomParagraph = ({ children }: any) => (
-        <p className="text-gray-800 leading-relaxed mb-4">
+        <p className="leading-relaxed mb-4">
             {children}
         </p>
     );
@@ -91,27 +91,42 @@ export const CustomMarkdown = ({ item }: any) => {
     );
 
     const CustomH3 = ({ children }: any) => (
-        <h3 className="text-xl font-semibold mt-4 mb-2">{children}<hr /></h3>
+        <h3 className="text-xl font-semibold mt-4 mb-2">{children}</h3>
     );
 
+const CustomH4 = ({ children }: any) => (
+        <h4 className="text-lg font-semibold mt-4 mb-2">{children}</h4>
+    );
+
+    const CustomH5 = ({ children }: any) => (
+        <h5 className="text-md font-semibold mt-4 mb-2">{children}</h5>
+    );
+
+    const CustomH6 = ({ children }: any) => (
+        <h6 className="text-sm font-semibold mt-4 mb-2">{children}</h6>
+    );
+
+
     const CustomList = ({ children }: any) => (
-        <List className="text-gray-700">
+        <List>
             <List.Item>{children}</List.Item>
         </List>
     );
 
     const CustomOrderedList = ({ children }: any) => (
-        <List className="text-gray-700" ordered>
+        <List ordered>
             <List.Item>{children}</List.Item>
         </List>
     );
-
     return (
         <Markdown components={{
             p: CustomParagraph,
             h1: CustomH1,
             h2: CustomH2,
             h3: CustomH3,
+            h4: CustomH4,
+            h5: CustomH5,
+            h6: CustomH6,
             li: CustomList,
             ol: CustomOrderedList
         }}

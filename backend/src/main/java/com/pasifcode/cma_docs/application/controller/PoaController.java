@@ -20,8 +20,10 @@ public class PoaController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<PoaDto>> findAll(Pageable pageable) {
-        Page<PoaDto> list = poaService.findAll(pageable);
+    public ResponseEntity<Page<PoaDto>> findAll(
+            @RequestParam(required = false) Long clientId,
+            Pageable pageable) {
+        Page<PoaDto> list = poaService.findAll(clientId, pageable);
         return ResponseEntity.ok(list);
     }
 

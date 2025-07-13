@@ -24,6 +24,8 @@ public abstract class Document {
     private String description;
     private String date;
     private String location;
+    @Column(columnDefinition="TEXT")
+    private String content;
 
     @CreatedDate
     private LocalDateTime createdDate = LocalDateTime.now();
@@ -31,13 +33,14 @@ public abstract class Document {
     public Document() {
     }
 
-    public Document(String title, String grantee, String grantor, String description, String date, String location) {
+    public Document(String title, String grantee, String grantor, String description, String date, String location, String content) {
         this.title = title;
         this.grantee = grantee;
         this.grantor = grantor;
         this.description = description;
         this.date = date;
         this.location = location;
+        this.content = content;
     }
 
 
@@ -91,5 +94,13 @@ public abstract class Document {
 
     public LocalDateTime getCreatedDate() {
         return createdDate;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

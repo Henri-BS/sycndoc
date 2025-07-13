@@ -38,7 +38,7 @@ public class ClientController {
     @PostMapping("/save")
     public ResponseEntity<Map<String, String>> saveCliente(@RequestBody ClientDto dto) {
         try {
-            clientService.saveCliente(dto);
+            clientService.saveClient(dto);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (DuplicateTuplesException e) {
             Map<String, String> jsonResult = Map.of("error", e.getMessage());

@@ -41,7 +41,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void saveCliente(ClientDto dto) {
+    public void saveClient(ClientDto dto) {
         User user = userRepository.findById(dto.getUserId()).orElseThrow();
 
         Client add = new Client();

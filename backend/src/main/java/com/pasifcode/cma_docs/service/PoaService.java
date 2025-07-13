@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface PoaService {
-    Page<PoaDto> findAll(Pageable pageable);
+    Page<PoaDto> findAll(Long clientId, Pageable pageable);
 
     PoaDto findById(Long id);
 

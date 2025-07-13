@@ -51,9 +51,9 @@ export default function Home() {
                         removeAccents(client.clientCpf)?.toUpperCase().includes(query.toLocaleUpperCase()) ||
                         client.clientBirthDate?.toUpperCase().includes(query.toLocaleUpperCase()) ||
                         removeAccents(client.clientBirthDate)?.toUpperCase().includes(query.toLocaleUpperCase())
-                    ).map(project => (
-                        <div key={project.id} className="relative flex justify-center">
-                            <ClientCard client={project} />
+                    ).map(client => (
+                        <div key={client.id} className="relative flex justify-center">
+                            <ClientCard client={client} />
                         </div>
                     ))}
                 </div>

@@ -8,6 +8,7 @@ import com.pasifcode.cma_docs.service.PoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,9 +24,16 @@ public class PoaServiceImpl implements PoaService {
     }
 
     @Override
-    public Page<PoaDto> findAll(Pageable pageable) {
-        Page<Poa> page = poaRepository.findAll(pageable);
-        return page.map(PoaDto::new);
+    public Page<PoaDto> findAll(Long clientId, Pageable pageable) {
+
+        Specification<Poa> spec = Specification.not(null);
+
+        if (clientId != null) {
+            spec = spec.and((root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("client").get("id"), clientId));
+        }
+
+
+        return poaRepository.findAll(spec, pageable).map(PoaDto::new);
     }
 
     @Override
@@ -42,16 +50,18 @@ public class PoaServiceImpl implements PoaService {
         add.setGrantor(
                 "**" + client.getClientName() + "**, " + client.getClientNationality() + ", " + client.getClientMaritalStatus() + ", " +
                         client.getClientProfession() + ", portadora da carteira de identidade RG: nº " + client.getClientRgNumber() + ", inscrito no CPF: n° " + client.getClientCpf() +
-                        ", residente e domiciliado em " + client.getClientAddress() + ", " + client.getClientResidentialNumber() + ", " + client.getClientDistrict() + ", na cidade de " + client.getClientCity() + " - " + client.getClientUf() + ", CEP:" + client.getClientCep()
+                        ", residente e domiciliado em " + client.getClientAddress() + ", " + client.getClientResidentialNumber() + ", " + client.getClientDistrict() +
+                        ", na cidade de " + client.getClientCity() + " - " + client.getClientUf() + ", CEP: " + client.getClientCep()
+
         );
         add.setGrantee(
-                "**Christian Moura de Oliveira**, OAB MA 29.388, endereço: Rua 24 de Dezembro nº 511/A bairro Seriema, Caxias - MA " +
-                        "CEP: 65.602-420, endereço eletrônico christian@christianmoura.com.br."
-
+                """
+                   **Christian Moura de Oliveira**, OAB MA 29.388, endereço: Rua 24 de Dezembro nº 511/A bairro Seriema, Caxias - MA CEP: 65.602-420, endereço eletrônico christian@christianmoura.com.br. \n
+                """
         );
         add.setDescription(
                 """
-                        O **objeto** desta procuração é representar o outorgante em todos os atos processuais ou administrativos, perante qualquer juiz, tribunal ou repartição pública.\s
+                        O **objeto** desta procuração é representar o outorgante em todos os atos processuais ou administrativos, perante qualquer juiz, tribunal ou repartição pública.\s\s
                         **PODERES:** Por este instrumento particular de procuração, constituo meu procurador o Outorgado, concedendo-lhe os poderes especiais para tudo que se fizer necessário para minha defesa, \
                         incluindo a cláusula ad judicia, para podendo propor contra quem de direito as ações complementares e defende-lo nas contrárias, perante qualquer Juízo, Instância ou Tribunal, \
                         seguindo umas e outras, até final decisão, usando dos recursos legais e acompanhando-os, para o foro em geral, **salvo receber citação inicial**, como assim proclama o art. [105](https://www.jusbrasil.com.br/topicos/10729547/artigo-105-da-lei-n-5869-de-11-de-janeiro-de-1973) do (CPC)[https://www.jusbrasil.com.br/legislacao/91735/codigo-processo-civil-lei-5869-73]. \s
@@ -65,6 +75,9 @@ public class PoaServiceImpl implements PoaService {
         );
         add.setLocation("Caxias - MA");
         add.setDate("3 de Junho de 2025.");
+        add.setContent(
+                "### Outorgante\n\n" + add.getGrantor() + "\n\n ### Outorgado\n\n" + add.getGrantee() + "\n\n" + add.getDescription() + "\n\n" + add.getLocation() + ", " + add.getDate()
+        );
         add.setClient(client);
         add.setUser(client.getUser());
         poaRepository.saveAndFlush(add);

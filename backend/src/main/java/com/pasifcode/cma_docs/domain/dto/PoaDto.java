@@ -17,8 +17,10 @@ public class PoaDto implements Serializable {
     private String description;
     private String date;
     private String location;
+    private String content;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDateTime createdDate;
+
     private Long userId;
     private String username;
     private String clientName;
@@ -35,6 +37,7 @@ public class PoaDto implements Serializable {
         description = poa.getDescription();
         date = poa.getDate();
         location = poa.getLocation();
+        content = poa.getContent();
         createdDate = poa.getCreatedDate();
         userId = poa.getUser().getId();
         username = poa.getUser().getUsername();
@@ -73,6 +76,11 @@ public class PoaDto implements Serializable {
     @JsonProperty
     public String getDate() {
         return date;
+    }
+
+    @JsonProperty
+    public String getContent() {
+        return content;
     }
 
     @JsonProperty
