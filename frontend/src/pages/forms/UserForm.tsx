@@ -116,7 +116,7 @@ export function Login() {
                                 value={values.userRoles}
                             >
                                 <option>Usuário</option>
-                                <option>Administrador</option>
+                                <option>Admin</option>
                             </Select>
                             <FieldError error={errors.userRoles} />
                         </div>

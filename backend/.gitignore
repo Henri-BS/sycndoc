@@ -34,3 +34,6 @@ build/
 
 ### Backend ###
 application-dev.yml
+
+rm syncdoc/bash.exe.stackdump
+echo "*.stackdump" >> .gitignore

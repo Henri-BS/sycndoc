@@ -1,4 +1,4 @@
-package com.pasifcode.cma_docs.domain.enums;
+package com.pasifcode.syncdoc.domain.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

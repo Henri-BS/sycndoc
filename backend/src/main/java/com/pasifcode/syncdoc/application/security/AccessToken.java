@@ -1,4 +1,4 @@
-package com.pasifcode.cma_docs.application.security;
+package com.pasifcode.syncdoc.application.security;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
