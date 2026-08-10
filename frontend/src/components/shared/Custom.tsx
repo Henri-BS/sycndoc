@@ -94,7 +94,7 @@ export const CustomMarkdown = ({ item }: any) => {
         <h3 className="text-xl font-semibold mt-4 mb-2">{children}</h3>
     );
 
-const CustomH4 = ({ children }: any) => (
+    const CustomH4 = ({ children }: any) => (
         <h4 className="text-lg font-semibold mt-4 mb-2">{children}</h4>
     );
 
@@ -118,6 +118,12 @@ const CustomH4 = ({ children }: any) => (
             <List.Item>{children}</List.Item>
         </List>
     );
+
+    const CustomLink = ({ href, children }: any) => (
+        <a href={href} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{children}</a>
+
+    );
+
     return (
         <Markdown components={{
             p: CustomParagraph,
@@ -128,7 +134,8 @@ const CustomH4 = ({ children }: any) => (
             h5: CustomH5,
             h6: CustomH6,
             li: CustomList,
-            ol: CustomOrderedList
+            ol: CustomOrderedList,
+            a: CustomLink
         }}
         >
             {item}

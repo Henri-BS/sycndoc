@@ -3,7 +3,7 @@ import * as FaIcons from "react-icons/fa6";
 import { Button, Modal, Footer as FooterFR, Navbar, Flowbite, List, ListItem, Dropdown } from "flowbite-react";
 import { useAuth } from "resources/auth";
 import { Link } from "react-router-dom";
-import { CustomMarkdown, customTheme } from "./Custom";
+import { customTheme } from "./Custom";
 
 export const removeAccents = (str: any) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -25,7 +25,7 @@ export const Header = () => {
                 <Navbar fluid rounded className="shadow bg-gradient-to-r from-zinc-900 to-zinc-800 text-white rounded-none">
                     <Link to={"/"}>
                         <Navbar.Brand>
-                            <img src={require("assets/img/logo.png")} className="mr-3 h-12 sm:h-12" alt="Logo" />
+                            <img src={"assets/img/logo.png"} className="mr-3 h-12 sm:h-12" alt="Logo" />
                         </Navbar.Brand>
                     </Link>
                     <div className="flex flex-row gap-2 items-center text-gray-300 md:order-2">
@@ -86,18 +86,18 @@ export const Footer = () => {
                     <div className="sm:flex sm:items-center sm:justify-between">
 
                         <Link to="/" className="flex items-center sm:justify-between text-gray-200 text-xl">
-                            <img src={require("assets/img/logo.png")} className="h-12 w-16" alt="logo" />
-                            CMA Docs
+                            <img src={"assets/img/logo.png"} className="h-16 w-16" alt="logo" />
+                            SyncDoc
                         </Link>
 
                         <div className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-100 sm:mb-0 space-x-6">
-                            <span onClick={() => setAboutModal(true)} className="cursor-pointer hover:underline" title="Sobre o CMA Docs">Sobre o CMA Docs</span>
+                            <span onClick={() => setAboutModal(true)} className="cursor-pointer hover:underline" title="Sobre o SyncDoc">Sobre o SyncDoc</span>
                             <span onClick={() => setTutorialModal(true)} className="cursor-pointer hover:underline" title="Tutorial do site" >Tutorial do site</span>
                         </div>
                     </div>
                     <hr className="my-6 border-gray-500 sm:mx-auto lg:my-8" />
                     <div className="sm:flex sm:items-center sm:justify-between">
-                        <FooterFR.Copyright href="/" by="CMA Docs" year={2025} className="text-white" />
+                        <FooterFR.Copyright href="/" by="SyncDoc" year={2025} className="text-white" />
                         <div className="flex mt-4 lg:justify-center lg:mt-0 text-2x1 space-x-6">
                             <FooterFR.Icon href="mailto:hbsantos@gmail.com" icon={FaIcons.FaEnvelope} title="Email" className="hover:text-gray-100" />
                         </div>
@@ -105,11 +105,11 @@ export const Footer = () => {
                 </div>
             </FooterFR>
             <Modal show={aboutModal} size="4xl" onClose={() => setAboutModal(false)}>
-                <Modal.Header>Sobre o CMA Docs</Modal.Header>
+                <Modal.Header>Sobre o SyncDoc</Modal.Header>
                 <Modal.Body>
                     <div className="space-y-6 p-6">
                         <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            O CMA Docs é uma plataforma projetada para automatizar a criação de documentos jurídicos,
+                            O SyncDoc é uma plataforma projetada para guardar e automatizar a criação de documentos para um cliente,
                             agilizando processos e reduzindo o tempo gasto na elaboração de contratos, procurações, termos, declarações e outros documentos legais.
                             A ferramenta funciona a partir de dados cadastrados pelos clientes,
                             garantindo a personalização e precisão das informações inseridas nos documentos.
@@ -129,20 +129,14 @@ export const Footer = () => {
                 <Modal.Body>
                     <div className="space-y-6 p-6">
                         <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            <p>Este tutorial fornece um guia passo a passo para utilizar o CMA Docs, uma plataforma inovadora para a geração automática de documentos jurídicos. Aqui estão os principais passos para navegar e operar o sistema:</p>
+                            <p>Este tutorial fornece um guia passo a passo para utilizar o SyncDoc, uma plataforma inovadora para a geração automática de documentos. Aqui estão os principais passos para navegar e operar o sistema:</p>
                             <List ordered>
                                 <ListItem><b>Cadastro de um Novo Cliente: </b>
-                                    Um usuário administrador pode registrar um novo cliente na plataforma. Esse cliente será a base para a criação de documentos jurídicos personalizados.
+                                    Um usuário administrador pode registrar um novo cliente na plataforma. Esse cliente será a base para a criação de documentos personalizados.
                                 </ListItem>
                                 <ListItem> <b>Adição de Dados Personalizados: </b>
-                                    Durante o cadastro, é possível adicionar informações detalhadas sobre o cliente, incluindo:
+                                    Durante o cadastro, é possível adicionar informações detalhadas sobre o cliente.
                                 </ListItem>
-                                <List nested>
-                                    <ListItem>Dados pessoais do outorgante/cliente (nome, nacionalidade, profissão, estado civil, CPF, RG, endereço).</ListItem>
-                                    <ListItem>Informações sobre o ourtorgado/advogado responsável(nome, OAB, endereço e email).</ListItem>
-                                    <ListItem>Detalhes do a rogo (pessoa que assina pelo cliente, caso aplicável).</ListItem>
-                                    <ListItem>Identificação de testemunhas envolvidas.</ListItem>
-                                </List>
                                 <ListItem><b>Visualização e Busca de Clientes: </b>
                                     Após o cadastro, todos os clientes podem ser visualizados na lista paginada. Para facilitar a busca, a plataforma permite pesquisar clientes pelo nome ou outros critérios.
                                 </ListItem>

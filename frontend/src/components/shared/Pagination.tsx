@@ -2,11 +2,10 @@ import { Flowbite, TextInput } from "flowbite-react";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import { IoMdSearch } from "react-icons/io";
 import { User } from "resources/user";
-import { Client } from "resources/client";
 import { customTheme } from "./Custom";
 
 type Page = {
-    content: User[] | Client[];
+    content: any[];
     size?: number;
     number: number;
     totalElements: number;
